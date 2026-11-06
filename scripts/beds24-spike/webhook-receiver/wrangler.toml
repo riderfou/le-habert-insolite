@@ -1,0 +1,11 @@
+# CA7 – Worker jetable qui journalise les webhooks Beds24 reçus (story 1.1).
+# Déploiement : npx wrangler deploy  ·  Journal en direct : npx wrangler tail
+name = "habert-beds24-webhook-test"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+workers_dev = true
+
+# Garde le journal consultable dans le tableau de bord Cloudflare (Workers Logs),
+# même quand personne n'écoute avec `wrangler tail`.
+[observability]
+enabled = true

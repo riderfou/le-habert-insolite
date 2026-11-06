@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chalet insolite en Chartreuse · Plateau-des-Petites-Roches</title>
+<meta name="description" content="Chalet de montagne au toit végétalisé pour 4 personnes sur le Plateau-des-Petites-Roches, en Chartreuse, face à Belledonne. Réservation directe auprès des propriétaires.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sapin: #1E3A2F;
+    --sapin-clair: #2E5444;
+    --chartreuse: #C5D33F;
+    --chartreuse-pale: #EEF3C4;
+    --calcaire: #F2F3EF;
+    --ardoise: #263034;
+    --belledonne: #587684;
+    --brume: #D6DED9;
+    --occupe: #BCCBC2;
+    --blanc: #FFFFFF;
+    --serif: "Alegreya", Georgia, "Times New Roman", serif;
+    --sans: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+    --mesure: 66ch;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--calcaire);
+    color: var(--ardoise);
+    font-family: var(--sans);
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--sapin-clair); }
+  :focus-visible { outline: 3px solid var(--chartreuse); outline-offset: 2px; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.15; margin: 0; color: var(--sapin); }
+  h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: .6rem; }
+  h3 { font-size: 1.35rem; }
+  p { margin: 0 0 1rem; }
+
+  .enveloppe { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+  section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .chapeau { max-width: var(--mesure); color: var(--belledonne); font-size: 1.2rem; margin-bottom: 2rem; }
+
+  /* ----- En-tête ----- */
+  .entete {
+    position: absolute; inset: 0 0 auto 0; z-index: 3;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .entete .enveloppe { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
+  .marque { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--blanc); text-decoration: none; }
+  .entete nav { display: flex; gap: 1.4rem; }
+  .entete nav a { color: var(--blanc); text-decoration: none; font-weight: 500; }
+  .entete nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 760px) { .entete nav { display: none; } }
+
+  /* ----- Photos (emplacements à remplacer) ----- */
+  .photo {
+    position: relative; overflow: hidden; border-radius: 6px;
+    background: repeating-linear-gradient(135deg, #DDE4DF 0 14px, #E6ECE8 14px 28px);
+  }
+  .photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .photo > .emplacement {
+    position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
+    padding: 1rem; font-size: .9rem; color: var(--belledonne);
+  }
+  .emplacement strong { display: block; color: var(--sapin); font-size: 1rem; }
+
+  /* ----- Ouverture ----- */
+  .ouverture { position: relative; min-height: min(92vh, 860px); display: flex; align-items: flex-end; color: var(--blanc); padding: 0; }
+  .ouverture .photo { position: absolute; inset: 0; border-radius: 0; background: linear-gradient(160deg, #6F8A94, #2B4A3E 70%); }
+  .ouverture .photo > .emplacement { color: rgba(255,255,255,.65); inset: auto 1.5rem 9rem auto; text-align: right; }
+  .ouverture .photo > .emplacement strong { color: rgba(255,255,255,.85); }
+  .ouverture::before {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to bottom, rgba(20,35,29,.45), rgba(20,35,29,0) 30%, rgba(20,35,29,.15) 55%, rgba(20,35,29,.75));
+  }
+  .ouverture .contenu { position: relative; z-index: 2; padding-bottom: clamp(6rem, 12vw, 9rem); }
+  .ouverture h1 { color: var(--blanc); font-size: clamp(2.6rem, 7.5vw, 5.6rem); max-width: 14ch; letter-spacing: -.01em; }
+  .ouverture .accroche { font-size: clamp(1.15rem, 2.2vw, 1.4rem); max-width: 40ch; margin: 1rem 0 1.6rem; }
+  .crete { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 2; width: 100%; height: clamp(50px, 8vw, 110px); }
+
+  .chiffres { display: flex; flex-wrap: wrap; gap: .5rem 1.8rem; margin: 0 0 2rem; padding: 0; }
+  .chiffres div { display: flex; align-items: baseline; gap: .4rem; }
+  .chiffres dt { order: 2; }
+  .chiffres dd { margin: 0; font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--chartreuse); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+  .bouton {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .8rem 1.4rem; border-radius: 999px; border: 2px solid transparent;
+    font: 700 1.05rem var(--sans); text-decoration: none; cursor: pointer;
+  }
+  .bouton-plein { background: var(--chartreuse); color: var(--sapin); }
+  .bouton-plein:hover { background: #D3E04F; }
+  .bouton-contour { border-color: currentColor; color: inherit; background: transparent; }
+  .bouton-contour:hover { background: rgba(255,255,255,.12); }
+  .bouton-sapin { background: var(--sapin); color: var(--blanc); }
+  .bouton-sapin:hover { background: var(--sapin-clair); }
+  .bouton-discret { background: transparent; color: var(--belledonne); padding-inline: .6rem; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ----- Le chalet ----- */
+  .chalet-grille { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  @media (max-width: 900px) { .chalet-grille { grid-template-columns: 1fr; } }
+  .chalet-texte p { max-width: var(--mesure); }
+  .galerie { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: clamp(120px, 15vw, 190px); gap: .6rem; }
+  .galerie .photo:first-child { grid-column: span 2; grid-row: span 2; }
+
+  .chambres { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .chambre .photo { aspect-ratio: 4 / 3; margin-bottom: .8rem; }
+  .chambre p { color: var(--belledonne); margin: .2rem 0 0; }
+
+  /* ----- Équipements ----- */
+  .equipements { background: var(--blanc); }
+  .liste-equipements {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.4rem 2.5rem;
+  }
+  .liste-equipements li { padding-left: 1.4rem; position: relative; }
+  .liste-equipements li::before {
+    content: ""; position: absolute; left: 0; top: .55em; width: .6rem; height: .6rem;
+    background: var(--chartreuse); border-radius: 2px; transform: rotate(45deg);
+  }
+  .liste-equipements strong { display: block; color: var(--sapin); }
+  .liste-equipements span { color: var(--belledonne); font-size: 1rem; }
+
+  /* ----- Alentours ----- */
+  .alentours-grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); }
+  @media (max-width: 800px) { .alentours-grille { grid-template-columns: 1fr; } }
+  .distances { margin: 0; border-top: 1px solid var(--brume); }
+  .distances div { display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--brume); }
+  .distances dt { color: var(--ardoise); }
+  .distances dd { margin: 0; font-family: var(--serif); font-weight: 700; color: var(--sapin); white-space: nowrap; }
+
+  /* ----- Disponibilités ----- */
+  .disponibilites { background: var(--sapin); color: var(--blanc); }
+  .disponibilites h2 { color: var(--blanc); }
+  .disponibilites .chapeau { color: #C9D6CF; }
+  .calendrier { background: var(--blanc); color: var(--ardoise); border-radius: 10px; padding: clamp(1rem, 3vw, 2rem); }
+  .cal-barre { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .cal-fleche {
+    width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1px solid var(--brume); background: var(--blanc);
+    font-size: 1.3rem; color: var(--sapin); cursor: pointer;
+  }
+  .cal-fleche:hover:not(:disabled) { background: var(--calcaire); }
+  .cal-fleche:disabled { opacity: .3; cursor: default; }
+  .cal-mois-conteneur { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); }
+  @media (max-width: 640px) {
+    .cal-mois-conteneur { grid-template-columns: 1fr; }
+    .cal-mois:nth-child(2) { display: none; }
+  }
+  .cal-mois h3 { text-align: center; font-size: 1.25rem; margin-bottom: .7rem; text-transform: capitalize; }
+  .cal-grille { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+  .cal-jsem { text-align: center; font-size: .85rem; color: var(--belledonne); padding-bottom: .3rem; }
+  .cal-jour {
+    aspect-ratio: 1; border: 0; border-radius: 4px; background: var(--blanc);
+    font: 500 1rem var(--sans); color: var(--ardoise); cursor: pointer; position: relative;
+  }
+  .cal-jour:hover:not(:disabled) { box-shadow: inset 0 0 0 2px var(--sapin); }
+  .cal-jour:disabled { cursor: default; }
+  .cal-jour.passe { color: #B5BEBA; background: transparent; }
+  .cal-jour.occupe { background: var(--occupe); color: #5E6E66; text-decoration: line-through; }
+  .cal-jour.depart-seul { background: linear-gradient(135deg, var(--occupe) 50%, var(--blanc) 50%); }
+  .cal-jour.arrivee-seule { background: linear-gradient(135deg, var(--blanc) 50%, var(--occupe) 50%); }
+  .cal-jour.indispo-mode { color: #AAB5B0; }
+  .cal-jour.dans-plage { background: var(--chartreuse-pale); }
+  .cal-jour.borne { background: var(--chartreuse); color: var(--sapin); font-weight: 700; }
+  .cal-jour.aujourdhui::after {
+    content: ""; position: absolute; left: 50%; bottom: 14%; width: 4px; height: 4px; margin-left: -2px;
+    border-radius: 50%; background: currentColor;
+  }
+
+  .legende { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.3rem; font-size: .95rem; color: var(--belledonne); }
+  .legende span { display: inline-flex; align-items: center; gap: .5rem; }
+  .pastille { width: 1.1rem; height: 1.1rem; border-radius: 3px; border: 1px solid var(--brume); }
+
+  .selection { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--brume); }
+  .selection p { margin-bottom: .9rem; }
+  .selection .resume { font-family: var(--serif); font-size: 1.3rem; color: var(--sapin); }
+  .etat-synchro { margin: 1rem 0 0; font-size: .95rem; color: #C9D6CF; }
+  .etat-synchro.alerte { color: var(--chartreuse); }
+
+  /* ----- Avis ----- */
+  .avis-bloc { display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+  @media (max-width: 700px) { .avis-bloc { grid-template-columns: 1fr; } }
+  .note { font-family: var(--serif); font-size: clamp(4.5rem, 12vw, 7.5rem); font-weight: 700; color: var(--sapin); line-height: 1; }
+  .note small { display: block; font-family: var(--sans); font-size: 1.05rem; font-weight: 500; color: var(--belledonne); margin-top: .5rem; }
+  .themes { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.4rem; padding: 0; list-style: none; }
+  .themes li { padding: .35rem .9rem; border: 1px solid var(--brume); border-radius: 999px; background: var(--blanc); font-size: 1rem; }
+
+  /* ----- Contact ----- */
+  .contact { background: var(--blanc); }
+  .contact-grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  @media (max-width: 800px) { .contact-grille { grid-template-columns: 1fr; } }
+  .coordonnees { margin: 0 0 1.6rem; }
+  .coordonnees div { padding: .8rem 0; border-bottom: 1px solid var(--brume); }
+  .coordonnees dt { font-size: .95rem; color: var(--belledonne); }
+  .coordonnees dd { margin: 0; font-family: var(--serif); font-size: 1.35rem; }
+  .coordonnees a { color: var(--sapin); text-decoration: none; }
+  .coordonnees a:hover { text-decoration: underline; }
+
+  /* ----- Pied de page ----- */
+  .pied { position: relative; background: var(--sapin); color: #C9D6CF; padding: 4.5rem 0 calc(2rem + env(safe-area-inset-bottom, 0px)); font-size: 1rem; }
+  .pied .crete { top: -1px; bottom: auto; transform: scaleY(-1); }
+  .pied .enveloppe { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+  .pied a { color: var(--blanc); }
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <div class="enveloppe">
+    <a class="marque" href="#">Chalet insolite en Chartreuse</a>
+    <nav aria-label="Navigation principale">
+      <a href="#chalet">Le chalet</a>
+      <a href="#alentours">Alentours</a>
+      <a href="#disponibilites">Disponibilités</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="ouverture">
+    <div class="photo">
+      <img src="images/ouverture.jpg" alt="Le chalet au toit végétalisé face aux sommets de Belledonne" onerror="this.remove()">
+      <span class="emplacement"><strong>Photo principale</strong>images/ouverture.jpg</span>
+    </div>
+    <div class="enveloppe contenu">
+      <h1>Un chalet au toit d'herbe, face à Belledonne</h1>
+      <p class="accroche">Sur le Plateau-des-Petites-Roches, en Chartreuse. Le chalet entier rien que pour vous, au calme, au départ des sentiers et des pistes.</p>
+      <dl class="chiffres">
+        <div><dt>voyageurs</dt><dd>4</dd></div>
+        <div><dt>chambres</dt><dd>2</dd></div>
+        <div><dt>lits</dt><dd>3</dd></div>
+        <div><dt>salle de bain</dt><dd>1</dd></div>
+      </dl>
+      <div class="actions">
+        <a class="bouton bouton-plein" href="#disponibilites">Voir les disponibilités</a>
+        <a class="bouton bouton-contour" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+    <svg class="crete" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#F2F3EF" d="M0 110V72L70 58L125 67L205 29L253 46L315 16L365 38L437 26L495 44L580 8L640 35L686 26L756 58L820 33L872 44L960 4L1015 29L1081 22L1139 43L1211 13L1263 29L1339 19L1440 38V110Z"/>
+    </svg>
+  </section>
+
+  <section id="chalet">
+    <div class="enveloppe">
+      <div class="chalet-grille">
+        <div class="chalet-texte">
+          <h2>Le chalet</h2>
+          <p class="chapeau">Un chalet de montagne niché dans la nature, où l'authenticité montagnarde rencontre le confort d'aujourd'hui.</p>
+          <p>Le matin, on prend son café face aux sommets de Belledonne. Le soir, on se retrouve au coin du feu après une journée de randonnée, de VTT ou de ski. Chaque détail a été pensé pour que vous vous sentiez bien.</p>
+          <p>La pièce de vie réunit une cuisine entièrement équipée, ouverte sur un salon chaleureux avec canapé et cheminée. La salle de bain dispose d'une douche. Un local de stockage accueille skis, vélos et matériel de randonnée, et une buanderie avec lave-linge complète l'ensemble.</p>
+          <p>Lorsque vous réservez, vous disposez du chalet entier pour votre groupe.</p>
+        </div>
+        <div class="galerie">
+          <div class="photo"><img src="images/salon.jpg" alt="Le salon et sa cheminée" onerror="this.remove()"><span class="emplacement"><strong>Salon</strong>images/salon.jpg</span></div>
+          <div class="photo"><img src="images/cuisine.jpg" alt="La cuisine ouverte" onerror="this.remove()"><span class="emplacement"><strong>Cuisine</strong>images/cuisine.jpg</span></div>
+          <div class="photo"><img src="images/vue.jpg" alt="La vue sur Belledonne" onerror="this.remove()"><span class="emplacement"><strong>Vue</strong>images/vue.jpg</span></div>
+          <div class="photo"><img src="images/exterieur.jpg" alt="Le chalet vu de l'extérieur" onerror="this.remove()"><span class="emplacement"><strong>Extérieur</strong>images/exterieur.jpg</span></div>
+          <div class="photo"><img src="images/salle-de-bain.jpg" alt="La salle de bain" onerror="this.remove()"><span class="emplacement"><strong>Salle de bain</strong>images/salle-de-bain.jpg</span></div>
+        </div>
+      </div>
+
+      <div class="chambres">
+        <div class="chambre">
+          <div class="photo"><img src="images/chambre-1.jpg" alt="La grande chambre avec lit double" onerror="this.remove()"><span class="emplacement"><strong>Chambre 1</strong>images/chambre-1.jpg</span></div>
+          <h3>La grande chambre</h3>
+          <p>Un lit double.</p>
+        </div>
+        <div class="chambre">
+          <div class="photo"><img src="images/chambre-2.jpg" alt="La chambre en mezzanine avec deux lits simples" onerror="this.remove()"><span class="emplacement"><strong>Chambre 2</strong>images/chambre-2.jpg</span></div>
+          <h3>La mezzanine</h3>
+          <p>Une chambre cosy avec deux lits simples, parfaite pour les enfants ou des amis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="equipements">
+    <div class="enveloppe">
+      <h2>Ce qui vous attend sur place</h2>
+      <p class="chapeau">Draps et serviettes sont fournis : il ne reste qu'à poser les valises.</p>
+      <ul class="liste-equipements">
+        <li><strong>Cuisine entièrement équipée</strong><span>Avec lave-vaisselle</span></li>
+        <li><strong>Cheminée</strong><span>Dans le salon, pour les soirées d'hiver</span></li>
+        <li><strong>Wifi et espace de travail</strong><span>Pour télétravailler au calme</span></li>
+        <li><strong>Télévision HD 43 pouces</strong><span>Avec Disney+</span></li>
+        <li><strong>Buanderie</strong><span>Avec lave-linge</span></li>
+        <li><strong>Local à matériel</strong><span>Skis, vélos, matériel de randonnée</span></li>
+        <li><strong>Parking gratuit</strong><span>Sur place</span></li>
+        <li><strong>Arrivée autonome</strong><span>Boîte à clés sécurisée</span></li>
+        <li><strong>Lit parapluie</strong><span>Sur simple demande</span></li>
+        <li><strong>Café</strong><span>Cafetière italienne Bialetti et machine Senseo</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="alentours">
+    <div class="enveloppe alentours-grille">
+      <div>
+        <h2>Les alentours</h2>
+        <p class="chapeau">Un camp de base entre Chartreuse, Belledonne et Grésivaudan.</p>
+        <p>Les sentiers de randonnée et de VTT partent à proximité du chalet. L'hiver, plusieurs domaines skiables sont à quelques minutes de route. Et si vous venez simplement pour vous reposer, le plateau s'y prête parfaitement.</p>
+        <p>L'adresse exacte vous est communiquée à la réservation.</p>
+      </div>
+      <dl class="distances">
+        <div><dt>Espace ludique du Col de Marcieu</dt><dd>5 min</dd></div>
+        <div><dt>Station de Saint-Hilaire</dt><dd>10 min</dd></div>
+        <div><dt>Station des 7 Laux</dt><dd>40 min</dd></div>
+        <div><dt>Randonnée et VTT</dt><dd>Depuis le chalet</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="disponibilites" class="disponibilites">
+    <div class="enveloppe">
+      <h2>Disponibilités</h2>
+      <p class="chapeau">Choisissez votre date d'arrivée, puis votre date de départ, et envoyez-nous votre demande.</p>
+
+      <div class="calendrier">
+        <div class="cal-barre">
+          <button class="cal-fleche" id="calPrecedent" type="button" aria-label="Mois précédent">‹</button>
+          <button class="cal-fleche" id="calSuivant" type="button" aria-label="Mois suivant">›</button>
+        </div>
+        <div class="cal-mois-conteneur" id="calMois"></div>
+
+        <div class="legende">
+          <span><i class="pastille" style="background:#fff"></i>Libre</span>
+          <span><i class="pastille" style="background:var(--occupe)"></i>Réservé</span>
+          <span><i class="pastille" style="background:linear-gradient(135deg,var(--occupe) 50%,#fff 50%)"></i>Départ d'autres voyageurs, arrivée possible</span>
+          <span><i class="pastille" style="background:var(--chartreuse)"></i>Votre séjour</span>
+        </div>
+
+        <div class="selection" id="calSelection" aria-live="polite"></div>
+      </div>
+      <p class="etat-synchro" id="calEtat">Chargement du calendrier…</p>
+    </div>
+  </section>
+
+  <section id="avis">
+    <div class="enveloppe avis-bloc">
+      <p class="note">5,0<small>sur 5, d'après 17 avis Airbnb</small></p>
+      <div>
+        <h2>Ce qu'en disent les voyageurs</h2>
+        <p>Le chalet fait partie des logements préférés des voyageurs sur Airbnb. Ce qui revient le plus souvent dans les commentaires :</p>
+        <ul class="themes">
+          <li>La vue</li><li>L'hospitalité</li><li>L'emplacement</li><li>La décoration</li><li>Les espaces intérieurs</li><li>Le calme</li>
+        </ul>
+        <a class="bouton bouton-sapin" href="https://www.airbnb.fr/rooms/1510871650994741174#reviews" target="_blank" rel="noopener">Lire les avis sur Airbnb</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="enveloppe contact-grille">
+      <div>
+        <h2>Réserver en direct</h2>
+        <p class="chapeau">Écrivez-nous ou appelez-nous : nous vous répondons rapidement.</p>
+        <p>Nous sommes Jérôme et Laura. Nous accueillons des voyageurs depuis plus de dix ans et parlons français, anglais et allemand.</p>
+        <p>Indiquez-nous vos dates et le nombre de voyageurs. Pensez à nous prévenir si vous avez besoin d'un lit parapluie.</p>
+      </div>
+      <div>
+        <dl class="coordonnees">
+          <div><dt>Téléphone</dt><dd><a data-lien="telephone" href="#"></a></dd></div>
+          <div><dt>E-mail</dt><dd><a data-lien="email" href="#"></a></dd></div>
+        </dl>
+        <div class="actions">
+          <a class="bouton bouton-sapin" data-lien="email" data-garder-texte href="#">Écrire un e-mail</a>
+          <a class="bouton bouton-contour" data-lien="telephone" data-garder-texte href="#" style="color:var(--sapin)">Appeler</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <svg class="crete" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#FFFFFF" d="M0 110V72L70 58L125 67L205 29L253 46L315 16L365 38L437 26L495 44L580 8L640 35L686 26L756 58L820 33L872 44L960 4L1015 29L1081 22L1139 43L1211 13L1263 29L1339 19L1440 38V110Z"/>
+  </svg>
+  <div class="enveloppe">
+    <span>Chalet insolite en Chartreuse, Plateau-des-Petites-Roches (Isère)</span>
+    <span><a href="mentions-legales.html">Mentions légales</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============ À personnaliser ============ */
+const CONFIG = {
+  email: "contact@votre-gite.fr",
+  telephone: "06 00 00 00 00",
+  urlCalendrier: "calendrier.php",
+  moisAffichables: 12
+};
+/* ========================================= */
+
+// Coordonnées
+document.querySelectorAll("[data-lien]").forEach(a => {
+  const type = a.dataset.lien;
+  const valeur = CONFIG[type];
+  a.href = type === "email" ? "mailto:" + valeur : "tel:" + valeur.replace(/\s/g, "");
+  if (!a.hasAttribute("data-garder-texte")) a.textContent = valeur;
+});
+
+// Outils de dates (en heure locale, sans fuseau)
+const versCle = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const depuisCle = s => { const [a, m, j] = s.split("-").map(Number); return new Date(a, m - 1, j); };
+const plusJours = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const fmtLong = d => d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+
+const aujourdhui = new Date(); aujourdhui.setHours(0, 0, 0, 0);
+const premierMois = new Date(aujourdhui.getFullYear(), aujourdhui.getMonth(), 1);
+
+let nuitsOccupees = new Set();   // une clé par nuit occupée (la nuit du jour J au jour J+1)
+let decalage = 0;                // mois affiché par rapport au mois courant
+let arrivee = null, depart = null;
+
+const nuitLibre = d => !nuitsOccupees.has(versCle(d));
+const peutArriver = d => d >= aujourdhui && nuitLibre(d);
+const peutPartir = d => {
+  if (!arrivee || d <= arrivee) return false;
+  for (let n = arrivee; n < d; n = plusJours(n, 1)) if (!nuitLibre(n)) return false;
+  return true;
+};
+
+function chargerPeriodes(periodes) {
+  nuitsOccupees = new Set();
+  periodes.forEach(p => {
+    for (let n = depuisCle(p.arrivee), fin = depuisCle(p.depart); n < fin; n = plusJours(n, 1)) {
+      nuitsOccupees.add(versCle(n));
+    }
+  });
+}
+
+function dessinerMois(base) {
+  const bloc = document.createElement("div");
+  bloc.className = "cal-mois";
+  const titre = document.createElement("h3");
+  titre.textContent = base.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+  bloc.appendChild(titre);
+
+  const grille = document.createElement("div");
+  grille.className = "cal-grille";
+  ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."].forEach(j => {
+    const e = document.createElement("span");
+    e.className = "cal-jsem"; e.textContent = j.charAt(0).toUpperCase(); e.title = j;
+    e.setAttribute("aria-hidden", "true");
+    grille.appendChild(e);
+  });
+
+  const vide = (base.getDay() + 6) % 7;
+  for (let i = 0; i < vide; i++) grille.appendChild(document.createElement("span"));
+
+  const nbJours = new Date(base.getFullYear(), base.getMonth() + 1, 0).getDate();
+  for (let j = 1; j <= nbJours; j++) {
+    const d = new Date(base.getFullYear(), base.getMonth(), j);
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "cal-jour"; b.textContent = j;
+
+    const nuitPrise = !nuitLibre(d);
+    const matinPris = !nuitLibre(plusJours(d, -1));
+    let etiquette = fmtLong(d);
+
+    if (d < aujourdhui) {
+      b.classList.add("passe"); b.disabled = true;
+    } else {
+      if (nuitPrise && matinPris) { b.classList.add("occupe"); etiquette += ", réservé"; }
+      else if (nuitPrise) { b.classList.add("arrivee-seule"); etiquette += ", départ possible ce jour-là"; }
+      else if (matinPris) { b.classList.add("depart-seul"); etiquette += ", arrivée possible ce jour-là"; }
+      else etiquette += ", libre";
+
+      const choixDepart = arrivee && !depart;
+      const cliquable = choixDepart ? (peutPartir(d) || peutArriver(d)) : peutArriver(d);
+      if (!cliquable) { b.disabled = true; if (!b.classList.contains("occupe")) b.classList.add("indispo-mode"); }
+
+      if (arrivee && depart && d > arrivee && d < depart) b.classList.add("dans-plage");
+      if ((arrivee && +d === +arrivee) || (depart && +d === +depart)) b.classList.add("borne");
+      b.addEventListener("click", () => choisir(d));
+    }
+    if (+d === +aujourdhui) b.classList.add("aujourdhui");
+    b.setAttribute("aria-label", etiquette);
+    grille.appendChild(b);
+  }
+  bloc.appendChild(grille);
+  return bloc;
+}
+
+function dessiner() {
+  const conteneur = document.getElementById("calMois");
+  conteneur.innerHTML = "";
+  for (let i = 0; i < 2; i++) {
+    conteneur.appendChild(dessinerMois(new Date(premierMois.getFullYear(), premierMois.getMonth() + decalage + i, 1)));
+  }
+  document.getElementById("calPrecedent").disabled = decalage <= 0;
+  document.getElementById("calSuivant").disabled = decalage >= CONFIG.moisAffichables - 1;
+  dessinerSelection();
+}
+
+function choisir(d) {
+  if (!arrivee || depart) { if (peutArriver(d)) { arrivee = d; depart = null; } }
+  else if (peutPartir(d)) depart = d;
+  else if (peutArriver(d)) arrivee = d;
+  dessiner();
+}
+
+function dessinerSelection() {
+  const zone = document.getElementById("calSelection");
+  if (!arrivee) { zone.innerHTML = "<p>Sélectionnez votre date d'arrivée dans le calendrier.</p>"; return; }
+  if (!depart) {
+    zone.innerHTML = `<p class="resume">Arrivée le ${fmtLong(arrivee)}</p><p>Choisissez maintenant votre date de départ.</p>
+      <button class="bouton bouton-discret" type="button" id="calEffacer">Effacer</button>`;
+  } else {
+    const nuits = Math.round((depart - arrivee) / 86400000);
+    const sujet = `Demande de réservation du ${arrivee.toLocaleDateString("fr-FR")} au ${depart.toLocaleDateString("fr-FR")}`;
+    const corps = `Bonjour,\n\nNous souhaiterions réserver le chalet du ${fmtLong(arrivee)} au ${fmtLong(depart)} (${nuits} nuit${nuits > 1 ? "s" : ""}).\n\nNombre de voyageurs : \nBesoin d'un lit parapluie : oui / non\n\nMerci et à bientôt,\n`;
+    const mailto = `mailto:${CONFIG.email}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+    zone.innerHTML = `<p class="resume">Du ${fmtLong(arrivee)} au ${fmtLong(depart)}, ${nuits} nuit${nuits > 1 ? "s" : ""}</p>
+      <div class="actions">
+        <a class="bouton bouton-plein" href="${mailto}">Demander ces dates par e-mail</a>
+        <a class="bouton bouton-contour" style="color:var(--sapin)" href="tel:${CONFIG.telephone.replace(/\s/g, "")}">Appeler</a>
+        <button class="bouton bouton-discret" type="button" id="calEffacer">Effacer</button>
+      </div>`;
+  }
+  document.getElementById("calEffacer").addEventListener("click", () => { arrivee = depart = null; dessiner(); });
+}
+
+document.getElementById("calPrecedent").addEventListener("click", () => { decalage = Math.max(0, decalage - 1); dessiner(); });
+document.getElementById("calSuivant").addEventListener("click", () => { decalage = Math.min(CONFIG.moisAffichables - 1, decalage + 1); dessiner(); });
+
+// Dates fictives, utilisées seulement si le site est ouvert sans serveur (aperçu sur votre ordinateur)
+function periodesDemo() {
+  const p = (debut, duree) => ({ arrivee: versCle(plusJours(aujourdhui, debut)), depart: versCle(plusJours(aujourdhui, debut + duree)) });
+  return [p(2, 3), p(5, 4), p(16, 7), p(31, 2), p(45, 5)];
+}
+
+const etat = document.getElementById("calEtat");
+fetch(CONFIG.urlCalendrier, { cache: "no-store" })
+  .then(r => r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status)))
+  .then(donnees => {
+    if (!Array.isArray(donnees.periodes)) throw new Error("format");
+    chargerPeriodes(donnees.periodes);
+    const quand = new Date(donnees.mis_a_jour).toLocaleString("fr-FR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+    etat.textContent = `Calendrier synchronisé avec Airbnb, dernière mise à jour le ${quand}.`;
+    if (!donnees.a_jour) {
+      etat.textContent += " La synchronisation semble interrompue : contactez-nous pour confirmer vos dates.";
+      etat.classList.add("alerte");
+    }
+  })
+  .catch(() => {
+    if (location.protocol === "file:") {
+      chargerPeriodes(periodesDemo());
+      etat.textContent = "Aperçu avec des dates fictives : le calendrier réel s'affichera une fois le site en ligne.";
+    } else {
+      etat.textContent = "Le calendrier n'a pas pu être chargé. Contactez-nous pour vérifier la disponibilité de vos dates.";
+    }
+    etat.classList.add("alerte");
+  })
+  .finally(dessiner);
+</script>
+</body>
+</html>

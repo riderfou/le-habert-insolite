@@ -1,0 +1,21 @@
+{
+  "name": "beds24-spike",
+  "private": true,
+  "type": "module",
+  "description": "Scripts jetables de la story 1.1 : vérifier l'API Beds24 V2 avant l'adaptateur définitif (story 1.4).",
+  "scripts": {
+    "setup": "tsx setup.ts",
+    "token": "tsx token.ts",
+    "properties": "tsx properties.ts",
+    "bookings": "tsx list-bookings.ts",
+    "test-booking": "tsx create-test-booking.ts",
+    "messages": "tsx messages.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test lib.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
